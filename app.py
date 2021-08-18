@@ -12,7 +12,7 @@ import requests
 import streamlit as st
 
 url_de = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_de"
-#url_en = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_en"
+url_en = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_en"
 url_es = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_es"
 url_fr = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_fr"
 url_it = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_it"
@@ -20,7 +20,7 @@ url_nl = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_n
 url_pt = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_pt"
 url_tr = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_tr"
 r_de = requests.get(url_de, stream = True)
-#r_en = requests.get(url_en, stream = True)
+r_en = requests.get(url_en, stream = True)
 r_es = requests.get(url_es, stream = True)
 r_fr = requests.get(url_fr, stream = True)
 r_it = requests.get(url_it, stream = True)
@@ -32,11 +32,11 @@ if not os.path.exists('de_from_url'):
     for block in r_de.iter_content(chunk_size = 8192):
       if block:
         f.write(block)
-#if not os.path.exists('en_from_url'):
-#  with open("en_from_url","wb") as f:
-#    for block in r_en.iter_content(chunk_size = 8192):
-#      if block:
-#        f.write(block)
+if not os.path.exists('en_from_url'):
+  with open("en_from_url","wb") as f:
+    for block in r_en.iter_content(chunk_size = 8192):
+      if block:
+        f.write(block)
 if not os.path.exists('es_from_url'):
   with open("es_from_url","wb") as f:
     for block in r_es.iter_content(chunk_size = 8192):
@@ -88,7 +88,7 @@ def find_similar_items(lang_index,mapping_name,embedding, num_matches=5):
 
 embedding_dimension = 64
 
-#index_filename_en = "en_from_url"
+index_filename_en = "en_from_url"
 index_filename_es = "es_from_url"
 index_filename_fr = "fr_from_url"
 index_filename_it = "it_from_url"
@@ -97,7 +97,7 @@ index_filename_pt = "pt_from_url"
 index_filename_tr = "tr_from_url"
 index_filename_de = "de_from_url"
 
-#index_en = annoy.AnnoyIndex(embedding_dimension)
+index_en = annoy.AnnoyIndex(embedding_dimension)
 index_es = annoy.AnnoyIndex(embedding_dimension)
 index_fr = annoy.AnnoyIndex(embedding_dimension)
 index_it = annoy.AnnoyIndex(embedding_dimension)
@@ -107,7 +107,7 @@ index_tr = annoy.AnnoyIndex(embedding_dimension)
 index_pt = annoy.AnnoyIndex(embedding_dimension)
 
 
-#index_en.load(index_filename_en, prefault=True)
+index_en.load(index_filename_en, prefault=True)
 index_es.load(index_filename_es, prefault=True)
 index_fr.load(index_filename_fr, prefault=True)
 index_it.load(index_filename_it, prefault=True)
