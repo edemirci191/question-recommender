@@ -10,6 +10,11 @@ from urllib.request import urlopen
 from urllib.error import HTTPError
 import requests
 import streamlit as st
+import bokeh
+import bokeh.models
+import bokeh.plotting
+import tensorflow as tf
+from tensorflow_text import SentencepieceTokenizer
 
 url_de = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_de"
 url_en = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_en"
