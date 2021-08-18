@@ -6,4 +6,3 @@ pandas==1.1.5
 annoy==1.17.0
 pickleshare==0.7.5
 requests==2.26.0
-tensorflow_text==2.5.0
