@@ -68,29 +68,10 @@ if not os.path.exists('tr_from_url'):
       if block:
         f.write(block)
 
-def download_file_from_bucket(blob_name, file_path, bucket_name):
-  try:
-    bucket = storage_client.get_bucket(bucket_name)
-    blob = bucket.blob(blob_name)
-    with open(file_path, 'wb') as f:
-      storage_client.download_blob_to_file(blob,f)
-  except Exception as e:
-    print(e)
-    return False
 
 def apply_url(id):
   full_url = "https://www.jotform.com/answers/" + str(id)
   return full_url
-
-def check_url(id):
-  validity = 'not_known'
-  try:
-    urlopen(apply_url(id))
-    validity = 'valid'
-  except HTTPError as err:
-    if err.code == 404:
-      validity = 'invalid'
-  return validity
 
 
 mapping_en, mapping_de, mapping_tr, mapping_pt, mapping_it, mapping_es, mapping_nl, mapping_fr = pickle.load(urlopen("https://storage.googleapis.com/jotform-recommender.appspot.com/mapping.pkl"))
