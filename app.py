@@ -10,6 +10,7 @@ from urllib.request import urlopen
 from urllib.error import HTTPError
 import requests
 import streamlit as st
+import tensorflow_text
 from tensorflow_text import SentencepieceTokenizer
 
 url_de = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_de"
