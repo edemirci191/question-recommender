@@ -11,7 +11,7 @@ from urllib.error import HTTPError
 import requests
 import streamlit as st
 
-url_de = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_de"
+'''url_de = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_de"
 url_en = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_en"
 url_es = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_es"
 url_fr = "https://storage.googleapis.com/jotform-recommender.appspot.com/index_fr"
@@ -265,8 +265,12 @@ def main():
       show_df['Thread URL'] = lst
       #show_df.set_index('Thread URL', inplace = True)
       st.subheader('Recommendations')
-      st.table(show_df)
+      st.table(show_df)'''
 
+def main():
+  st.title("Jotform Support Forum Question Recommender")
+  st.subheader("Overview")
+  st.write("Purpose of this application is to recommend the user similar questions that has been asked before by other users. When the user asks a new question other already answered similar questions are going to be recommended to the user in English and also in his/her native language.")
 
 
 if __name__ == '__main__':
