@@ -1,3 +1,7 @@
 import streamlit as st
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import streamlit as st
 
 st.write("Is this going to work ? suprise me")
